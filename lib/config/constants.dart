@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // Colors
 const Color primaryColor = Color(0xFFFAEFE6);
 const Color secondaryColor = Color(0xFF79593D);
+const Color textColor = Color(0xFF222222);
 
 // Icons
 const String twoDIcon = 'assets/icons/2DIcon.svg';
