@@ -5,6 +5,12 @@ const Color primaryColor = Color(0xFFFAEFE6);
 const Color secondaryColor = Color(0xFF79593D);
 const Color textColor = Color(0xFF222222);
 
+const LinearGradient elevated = LinearGradient(colors: [
+  Color(0xFFDA8207),
+  Color(0xFFFFCB3C),
+  Color(0xFFE39C1E),
+]);
+
 // Icons
 const String twoDIcon = 'assets/icons/2DIcon.svg';
 const String threeDIcon = 'assets/icons/3DIcon.svg';

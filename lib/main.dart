@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
-import 'package:ring_sizer/views/settings_page.dart';
+import 'package:ring_sizer/views/welcome_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,9 +28,20 @@ class MyApp extends StatelessWidget {
         splashColor: Colors.transparent,
         hoverColor: Colors.transparent,
         highlightColor: Colors.transparent,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            side: const BorderSide(color: primaryColor),
+            minimumSize: Size.zero,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
       ),
       navigatorKey: NavigatorKey.navigatorKey,
-      home: const SettingsPage(),
+      home: const WelcomePage(),
     );
   }
 }
