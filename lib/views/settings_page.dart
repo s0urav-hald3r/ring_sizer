@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/components/back_appbar.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
+import 'package:ring_sizer/views/premium_page.dart';
 import 'package:ring_sizer/views/save_size_page.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -31,7 +32,9 @@ class SettingsPage extends StatelessWidget {
                       NavigatorKey.push(const SaveSizePage());
                     }),
                     const Divider(height: 1, color: primaryColor),
-                    menuOption('Managing Subscriptions', () {}),
+                    menuOption('Managing Subscriptions', () {
+                      NavigatorKey.push(const PremiumPage());
+                    }),
                     const Divider(height: 1, color: primaryColor),
                     menuOption('Contact Us', () {}),
                     const Divider(height: 1, color: primaryColor),
