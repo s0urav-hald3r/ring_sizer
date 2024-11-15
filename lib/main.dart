@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
+import 'package:ring_sizer/controllers/navbar_controller.dart';
 import 'package:ring_sizer/views/welcome_page.dart';
 
 void main() async {
@@ -10,6 +11,9 @@ void main() async {
 
   // Initialize storage
   await GetStorage.init();
+
+  // Injecting dependencies
+  Get.lazyPut(() => NavBarController());
 
   runApp(const MyApp());
 }
