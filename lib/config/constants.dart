@@ -21,9 +21,12 @@ const String crossIcon = 'assets/icons/crossIcon.svg';
 const String infoIcon = 'assets/icons/infoIcon.svg';
 const String menuIcon = 'assets/icons/menuIcon.svg';
 const String minusIcon = 'assets/icons/minusIcon.svg';
-const String navConverterIcon = 'assets/icons/navConverterIcon.svg';
-const String navFingerIcon = 'assets/icons/navFingerIcon.svg';
-const String navRingIcon = 'assets/icons/navRingIcon.svg';
+const String navSConverterIcon = 'assets/icons/navSConverterIcon.svg';
+const String navUConverterIcon = 'assets/icons/navUConverterIcon.svg';
+const String navSFingerIcon = 'assets/icons/navSFingerIcon.svg';
+const String navUFingerIcon = 'assets/icons/navUFingerIcon.svg';
+const String navSRingIcon = 'assets/icons/navSRingIcon.svg';
+const String navURingIcon = 'assets/icons/navURingIcon.svg';
 const String saveIcon = 'assets/icons/saveIcon.svg';
 const String settingsIcon = 'assets/icons/settingsIcon.svg';
 
