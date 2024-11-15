@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/components/back_appbar.dart';
 import 'package:ring_sizer/config/constants.dart';
+import 'package:ring_sizer/config/navigation.dart';
+import 'package:ring_sizer/views/save_size_page.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -23,62 +25,39 @@ class SettingsPage extends StatelessWidget {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'United States',
-                      style: GoogleFonts.raleway(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: textColor,
-                      ),
-                    ),
-                    const Divider(height: 40, color: primaryColor),
-                    Text(
-                      'Save Size',
-                      style: GoogleFonts.raleway(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: textColor,
-                      ),
-                    ),
-                    const Divider(height: 40, color: primaryColor),
-                    Text(
-                      'Managing Subscriptions',
-                      style: GoogleFonts.raleway(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: textColor,
-                      ),
-                    ),
-                    const Divider(height: 40, color: primaryColor),
-                    Text(
-                      'Contact Us',
-                      style: GoogleFonts.raleway(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: textColor,
-                      ),
-                    ),
-                    const Divider(height: 40, color: primaryColor),
-                    Text(
-                      'Privacy Policy',
-                      style: GoogleFonts.raleway(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: textColor,
-                      ),
-                    ),
-                    const Divider(height: 40, color: primaryColor),
-                    Text(
-                      'Terms of Use',
-                      style: GoogleFonts.raleway(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: textColor,
-                      ),
-                    ),
+                    menuOption('United States', () {}),
+                    const Divider(height: 1, color: primaryColor),
+                    menuOption('Save Size', () {
+                      NavigatorKey.push(const SaveSizePage());
+                    }),
+                    const Divider(height: 1, color: primaryColor),
+                    menuOption('Managing Subscriptions', () {}),
+                    const Divider(height: 1, color: primaryColor),
+                    menuOption('Contact Us', () {}),
+                    const Divider(height: 1, color: primaryColor),
+                    menuOption('Privacy Policy', () {}),
+                    const Divider(height: 1, color: primaryColor),
+                    menuOption('Terms of Use', () {}),
                   ]),
             )
           ]),
+        ),
+      ),
+    );
+  }
+
+  Widget menuOption(String title, Function callBack) {
+    return InkWell(
+      onTap: () => callBack(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: Text(
+          title,
+          style: GoogleFonts.raleway(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: textColor,
+          ),
         ),
       ),
     );
