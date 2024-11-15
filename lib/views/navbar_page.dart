@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/controllers/navbar_controller.dart';
+import 'package:ring_sizer/views/converter_page.dart';
 
 class NavBarPage extends StatefulWidget {
   const NavBarPage({super.key});
@@ -21,7 +22,7 @@ class _NavBarPageState extends State<NavBarPage> {
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          _buildBody(),
+          Obx(() => _buildBody()),
           _buildBottomNavigationBar(),
         ],
       ),
@@ -32,7 +33,7 @@ class _NavBarPageState extends State<NavBarPage> {
     return [
       Container(),
       Container(),
-      Container(),
+      const ConverterPage(),
     ][controller.screenIndex];
   }
 
