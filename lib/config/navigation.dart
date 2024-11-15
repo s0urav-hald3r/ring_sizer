@@ -21,6 +21,10 @@ class NavigatorKey {
         (route) => false);
   }
 
+  static bool canPop() {
+    return navigatorKey.currentState?.canPop() ?? false;
+  }
+
   static void pop() {
     return navigatorKey.currentState?.pop();
   }

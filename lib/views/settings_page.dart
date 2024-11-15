@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ring_sizer/components/back_appbar.dart';
 import 'package:ring_sizer/config/constants.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -18,31 +18,7 @@ class SettingsPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(children: [
             const SizedBox(height: 10),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              Container(
-                width: 45,
-                height: 45,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: primaryColor,
-                ),
-                child: Center(
-                  child: SvgPicture.asset(backIcon),
-                ),
-              ),
-              Text(
-                'Settings',
-                style: GoogleFonts.raleway(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: secondaryColor,
-                ),
-              ),
-              const SizedBox(
-                width: 45,
-                height: 45,
-              )
-            ]),
+            const BackAppBar(title: 'Settings'),
             Expanded(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
