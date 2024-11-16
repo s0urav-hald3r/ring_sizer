@@ -59,11 +59,10 @@ class WelcomePage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        NavigatorKey.pushReplacement(const CountryPage());
+                        NavigatorKey.push(const CountryPage());
                       },
                     ),
-                  ),
-                  const SizedBox(height: 30)
+                  )
                 ]),
               ),
             )

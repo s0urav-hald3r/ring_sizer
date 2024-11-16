@@ -37,3 +37,6 @@ const String diamondRing = 'assets/images/diamondRing.png';
 const String plainRing = 'assets/images/plainRing.png';
 const String premiumPage = 'assets/images/premiumPage.png';
 const String onboardingOne = 'assets/images/onboardingOne.png';
+
+// Local storage keys
+const String storeCountryName = 'storeCountryName';

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/components/back_appbar.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
+import 'package:ring_sizer/controllers/settings_controller.dart';
 import 'package:ring_sizer/views/premium_page.dart';
 import 'package:ring_sizer/views/save_size_page.dart';
 
@@ -12,6 +13,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final controller = SettingsController.instance;
 
     return Scaffold(
       body: SafeArea(
@@ -26,7 +28,7 @@ class SettingsPage extends StatelessWidget {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    menuOption('United States', () {}),
+                    menuOption(controller.countryName, () {}),
                     const Divider(height: 1, color: primaryColor),
                     menuOption('Save Size', () {
                       NavigatorKey.push(const SaveSizePage());

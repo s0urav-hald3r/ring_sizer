@@ -6,6 +6,7 @@ import 'package:ring_sizer/config/navigation.dart';
 import 'package:ring_sizer/controllers/converter_controller.dart';
 import 'package:ring_sizer/controllers/country_controller.dart';
 import 'package:ring_sizer/controllers/navbar_controller.dart';
+import 'package:ring_sizer/controllers/settings_controller.dart';
 import 'package:ring_sizer/views/welcome_page.dart';
 
 void main() async {
@@ -18,6 +19,7 @@ void main() async {
   Get.lazyPut(() => CountryController());
   Get.lazyPut(() => NavBarController());
   Get.lazyPut(() => ConverterController());
+  Get.lazyPut(() => SettingsController());
 
   runApp(const MyApp());
 }
