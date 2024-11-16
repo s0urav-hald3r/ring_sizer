@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
 import 'package:ring_sizer/controllers/converter_controller.dart';
+import 'package:ring_sizer/controllers/country_controller.dart';
 import 'package:ring_sizer/controllers/navbar_controller.dart';
 import 'package:ring_sizer/views/welcome_page.dart';
 
@@ -14,6 +15,7 @@ void main() async {
   await GetStorage.init();
 
   // Injecting dependencies
+  Get.lazyPut(() => CountryController());
   Get.lazyPut(() => NavBarController());
   Get.lazyPut(() => ConverterController());
 

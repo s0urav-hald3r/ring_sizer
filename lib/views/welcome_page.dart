@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
-import 'package:ring_sizer/views/navbar_page.dart';
+import 'package:ring_sizer/views/country_page.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -59,10 +59,11 @@ class WelcomePage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        NavigatorKey.pushReplacement(const NavBarPage());
+                        NavigatorKey.pushReplacement(const CountryPage());
                       },
                     ),
-                  )
+                  ),
+                  const SizedBox(height: 30)
                 ]),
               ),
             )
