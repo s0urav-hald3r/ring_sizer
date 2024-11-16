@@ -11,11 +11,10 @@ class RingSizerBox extends StatelessWidget {
 
     return Container(
       width: size.width,
-      height: 350,
+      height: 325,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(netBackground),
-        ),
+            image: AssetImage(netBackground), fit: BoxFit.cover),
       ),
       child: Stack(alignment: Alignment.center, children: [
         AnimatedContainer(
