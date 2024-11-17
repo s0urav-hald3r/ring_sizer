@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/components/ad_section.dart';
 import 'package:ring_sizer/config/constants.dart';
@@ -94,7 +95,11 @@ class PremiumPage extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () {
-                            NavigatorKey.pushReplacement(const NavBarPage());
+                            if (Get.currentRoute == '/') {
+                              NavigatorKey.pushReplacement(const NavBarPage());
+                            } else {
+                              NavigatorKey.pop();
+                            }
                           },
                           child: Container(
                             margin: const EdgeInsets.only(left: 27.5),
