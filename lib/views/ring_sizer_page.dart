@@ -33,6 +33,7 @@ class RingSizerPage extends StatelessWidget {
                 fontSize: 24,
                 fontWeight: FontWeight.w400,
                 color: textColor,
+                letterSpacing: -1,
               ),
             ),
             const SizedBox(height: 10),

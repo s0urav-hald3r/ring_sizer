@@ -24,12 +24,13 @@ class PremiumPage extends StatelessWidget {
                 width: size.width,
                 child: Column(children: [
                   Text(
-                    'Start Free Trial to Proceed With Measuring',
+                    'Start Free Trial to Proceed\nWith Measuring',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.lora(
                       fontSize: 26,
                       fontWeight: FontWeight.w400,
                       color: textColor,
+                      letterSpacing: -1,
                     ),
                   ),
                   const SizedBox(height: 20),

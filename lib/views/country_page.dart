@@ -165,6 +165,7 @@ class _CountryPageState extends State<CountryPage> {
                   fontSize: 24,
                   color: textColor,
                   fontWeight: FontWeight.w400,
+                  letterSpacing: -1,
                 ),
               ),
               const SizedBox(height: 10),

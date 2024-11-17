@@ -3,8 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/config/constants.dart';
+import 'package:ring_sizer/config/navigation.dart';
 import 'package:ring_sizer/controllers/navbar_controller.dart';
 import 'package:ring_sizer/views/converter_page.dart';
+import 'package:ring_sizer/views/finger_sizer_page.dart';
 import 'package:ring_sizer/views/ring_sizer_page.dart';
 
 class NavBarPage extends StatefulWidget {
@@ -87,7 +89,13 @@ class NavBarItem extends StatelessWidget {
     final controller = NavBarController.instance;
 
     return InkWell(
-      onTap: () => controller.screenIndex = index,
+      onTap: () {
+        if (index == 1) {
+          NavigatorKey.push(const FingerSizerPage());
+          return;
+        }
+        controller.screenIndex = index;
+      },
       child: Obx(
         () => Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           controller.screenIndex == index

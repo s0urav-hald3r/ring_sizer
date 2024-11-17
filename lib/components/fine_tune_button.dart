@@ -30,6 +30,7 @@ class FineTuneButton extends StatelessWidget {
           fontSize: 18,
           fontWeight: FontWeight.w400,
           color: textColor,
+          letterSpacing: -1,
         ),
       ),
       const SizedBox(width: 20),

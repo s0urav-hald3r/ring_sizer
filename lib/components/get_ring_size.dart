@@ -32,6 +32,7 @@ class GetRingSize extends StatelessWidget {
                   fontSize: 24,
                   fontWeight: FontWeight.w400,
                   color: textColor,
+                  letterSpacing: -1,
                 ),
               ),
               InkWell(
