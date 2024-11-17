@@ -59,125 +59,130 @@ class FingerSizerPage extends StatelessWidget {
                   child: Container(
                     color: primaryColor,
                     width: size.width,
-                    child: Column(children: [
-                      const SizedBox(height: 44),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                bottom: MediaQuery.of(context).padding.bottom,
+                    child: Stack(children: [
+                      Transform.translate(
+                        offset: Offset((size.width / 2) - 60, 120),
+                        child: Stack(
+                            alignment: Alignment.topCenter,
+                            clipBehavior: Clip.none,
+                            children: [
+                              DottedBorder(
+                                borderType: BorderType.RRect,
+                                color: secondaryColor,
+                                radius: const Radius.circular(100),
+                                child: AnimatedContainer(
+                                  duration: const Duration(milliseconds: 250),
+                                  width: 120,
+                                  height: 600,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
-                              child: Column(children: [
-                                InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    width: 45,
-                                    height: 45,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white,
-                                    ),
-                                    child: Center(
-                                      child: SvgPicture.asset(threeDIcon),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 20),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    width: 45,
-                                    height: 45,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white,
-                                    ),
-                                    child: Center(
-                                      child: SvgPicture.asset(navSFingerIcon),
+                              Positioned(
+                                top: 20,
+                                child: DottedBorder(
+                                  borderType: BorderType.Circle,
+                                  color: secondaryColor,
+                                  child: AnimatedContainer(
+                                    duration: const Duration(milliseconds: 250),
+                                    width: 80,
+                                    height: 80,
+                                    decoration: const BoxDecoration(
+                                      color: primaryColor,
+                                      shape: BoxShape.circle,
                                     ),
                                   ),
                                 ),
-                              ]),
-                            ),
-                            Transform.translate(
-                              offset: const Offset(0, 50),
-                              child: Stack(
-                                  alignment: Alignment.topCenter,
-                                  children: [
-                                    DottedBorder(
-                                      borderType: BorderType.RRect,
-                                      color: secondaryColor,
-                                      radius: const Radius.circular(100),
-                                      child: AnimatedContainer(
-                                        duration:
-                                            const Duration(milliseconds: 250),
-                                        width: 120,
-                                        height: 550,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(100),
-                                          color: Colors.white,
-                                        ),
+                              ),
+                              // Positioned(
+                              //   top: -200,
+                              //   child: Transform.scale(
+                              //     scale: 0.8,
+                              //     child: Image.asset(hand),
+                              //   ),
+                              // )
+                            ]),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        child: Container(
+                          width: size.width,
+                          padding: EdgeInsets.fromLTRB(
+                            25,
+                            0,
+                            25,
+                            MediaQuery.of(context).padding.bottom,
+                          ),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(children: [
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      width: 45,
+                                      height: 45,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.white,
+                                      ),
+                                      child: Center(
+                                        child: SvgPicture.asset(threeDIcon),
                                       ),
                                     ),
-                                    Positioned(
-                                      top: 20,
-                                      child: DottedBorder(
-                                        borderType: BorderType.Circle,
-                                        color: secondaryColor,
-                                        child: AnimatedContainer(
-                                          duration:
-                                              const Duration(milliseconds: 250),
-                                          width: 80,
-                                          height: 80,
-                                          decoration: const BoxDecoration(
-                                            color: primaryColor,
-                                            shape: BoxShape.circle,
-                                          ),
-                                        ),
+                                  ),
+                                  const SizedBox(height: 20),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      width: 45,
+                                      height: 45,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.white,
+                                      ),
+                                      child: Center(
+                                        child: SvgPicture.asset(navSFingerIcon),
                                       ),
                                     ),
-                                  ]),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                bottom: MediaQuery.of(context).padding.bottom,
-                              ),
-                              child: Column(children: [
-                                InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    width: 45,
-                                    height: 45,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white,
-                                    ),
-                                    child: Center(
-                                      child: SvgPicture.asset(minusIcon),
+                                  ),
+                                ]),
+                                Column(children: [
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      width: 45,
+                                      height: 45,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.white,
+                                      ),
+                                      child: Center(
+                                        child: SvgPicture.asset(minusIcon),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(height: 20),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    width: 45,
-                                    height: 45,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white,
-                                    ),
-                                    child: Center(
-                                      child: SvgPicture.asset(addIcon),
+                                  const SizedBox(height: 20),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: Container(
+                                      width: 45,
+                                      height: 45,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.white,
+                                      ),
+                                      child: Center(
+                                        child: SvgPicture.asset(addIcon),
+                                      ),
                                     ),
                                   ),
-                                ),
+                                ]),
                               ]),
-                            ),
-                          ]),
+                        ),
+                      ),
                     ]),
                   ),
                 ),
