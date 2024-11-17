@@ -32,13 +32,11 @@ class RingSizerBox extends StatelessWidget {
           child: Stack(children: [
             AnimatedContainer(
               duration: const Duration(milliseconds: 250),
-              child: Container(
-                width: 130,
-                height: 130,
-                decoration: const BoxDecoration(
-                  gradient: elevated,
-                  shape: BoxShape.circle,
-                ),
+              width: 130,
+              height: 130,
+              decoration: const BoxDecoration(
+                gradient: elevated,
+                shape: BoxShape.circle,
               ),
             ),
             Align(

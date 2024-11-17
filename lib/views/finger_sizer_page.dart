@@ -1,4 +1,6 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/components/back_appbar.dart';
 
@@ -57,7 +59,126 @@ class FingerSizerPage extends StatelessWidget {
                   child: Container(
                     color: primaryColor,
                     width: size.width,
-                    child: const Column(children: []),
+                    child: Column(children: [
+                      const SizedBox(height: 44),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                bottom: MediaQuery.of(context).padding.bottom,
+                              ),
+                              child: Column(children: [
+                                InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    width: 45,
+                                    height: 45,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                    ),
+                                    child: Center(
+                                      child: SvgPicture.asset(threeDIcon),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    width: 45,
+                                    height: 45,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                    ),
+                                    child: Center(
+                                      child: SvgPicture.asset(navSFingerIcon),
+                                    ),
+                                  ),
+                                ),
+                              ]),
+                            ),
+                            Transform.translate(
+                              offset: const Offset(0, 50),
+                              child: Stack(
+                                  alignment: Alignment.topCenter,
+                                  children: [
+                                    DottedBorder(
+                                      borderType: BorderType.RRect,
+                                      color: secondaryColor,
+                                      radius: const Radius.circular(100),
+                                      child: AnimatedContainer(
+                                        duration:
+                                            const Duration(milliseconds: 250),
+                                        width: 120,
+                                        height: 550,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                      top: 20,
+                                      child: DottedBorder(
+                                        borderType: BorderType.Circle,
+                                        color: secondaryColor,
+                                        child: AnimatedContainer(
+                                          duration:
+                                              const Duration(milliseconds: 250),
+                                          width: 80,
+                                          height: 80,
+                                          decoration: const BoxDecoration(
+                                            color: primaryColor,
+                                            shape: BoxShape.circle,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ]),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                bottom: MediaQuery.of(context).padding.bottom,
+                              ),
+                              child: Column(children: [
+                                InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    width: 45,
+                                    height: 45,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                    ),
+                                    child: Center(
+                                      child: SvgPicture.asset(minusIcon),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                InkWell(
+                                  onTap: () {},
+                                  child: Container(
+                                    width: 45,
+                                    height: 45,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                    ),
+                                    child: Center(
+                                      child: SvgPicture.asset(addIcon),
+                                    ),
+                                  ),
+                                ),
+                              ]),
+                            ),
+                          ]),
+                    ]),
                   ),
                 ),
                 SemiCircleSlider(
