@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/components/fine_tune_button.dart';
+import 'package:ring_sizer/components/get_ring_size.dart';
 import 'package:ring_sizer/components/menu_appbar.dart';
 import 'package:ring_sizer/components/ring_sizer_box.dart';
 import 'package:ring_sizer/components/semicircle_slider.dart';
@@ -75,7 +76,17 @@ class RingSizerPage extends StatelessWidget {
                                 color: textColor,
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              showModalBottomSheet(
+                                  backgroundColor: Colors.transparent,
+                                  barrierColor: Colors.white10,
+                                  isDismissible: false,
+                                  isScrollControlled: true,
+                                  context: context,
+                                  builder: (context) {
+                                    return const GetRingSize();
+                                  });
+                            },
                           ),
                         ),
                         const SizedBox(height: 45)

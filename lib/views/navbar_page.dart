@@ -121,11 +121,11 @@ class BottomNavigationBarPainter extends CustomPainter {
     path.moveTo(0, size.height * 0.35);
 
     path.quadraticBezierTo(size.width * 0.015, size.height * 0.1,
-        size.width * 0.08, size.height * 0.1);
+        size.width * 0.08, size.height * 0.08);
     path.quadraticBezierTo(size.width * 0.35, 0, size.width * 0.5, 0);
 
     path.quadraticBezierTo(
-        size.width * 0.65, 0, size.width * 0.92, size.height * 0.1);
+        size.width * 0.65, 0, size.width * 0.92, size.height * 0.08);
     path.quadraticBezierTo(
         size.width * 0.985, size.height * 0.1, size.width, size.height * 0.35);
 
