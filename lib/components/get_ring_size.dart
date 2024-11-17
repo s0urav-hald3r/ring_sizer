@@ -81,10 +81,91 @@ class GetRingSize extends StatelessWidget {
             Container(
               width: size.width,
               height: 75,
+              padding: const EdgeInsets.all(13.5),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(children: [
+                      Text(
+                        'US',
+                        style: GoogleFonts.lora(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: textColor,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        '5',
+                        style: GoogleFonts.raleway(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: textColor,
+                        ),
+                      ),
+                    ]),
+                    Column(children: [
+                      Text(
+                        'AU/UK',
+                        style: GoogleFonts.lora(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: textColor,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        '5',
+                        style: GoogleFonts.raleway(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: textColor,
+                        ),
+                      ),
+                    ]),
+                    Column(children: [
+                      Text(
+                        'Size/In',
+                        style: GoogleFonts.lora(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: textColor,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        '5',
+                        style: GoogleFonts.raleway(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: textColor,
+                        ),
+                      ),
+                    ]),
+                    Column(children: [
+                      Text(
+                        'CM',
+                        style: GoogleFonts.lora(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: textColor,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        '5',
+                        style: GoogleFonts.raleway(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: textColor,
+                        ),
+                      ),
+                    ]),
+                  ]),
             ),
             const SizedBox(height: 30),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
