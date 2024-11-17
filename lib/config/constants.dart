@@ -38,6 +38,7 @@ const String plainRing = 'assets/images/plainRing.png';
 const String premiumPage = 'assets/images/premiumPage.png';
 const String onboardingOne = 'assets/images/onboardingOne.png';
 const String netBackground = 'assets/images/netBackground.png';
+const String hand = 'assets/images/hand.png';
 
 // Local storage keys
 const String storeCountryName = 'storeCountryName';
