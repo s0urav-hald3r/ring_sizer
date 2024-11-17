@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/components/ad_section.dart';
 import 'package:ring_sizer/config/constants.dart';
+import 'package:ring_sizer/config/navigation.dart';
+import 'package:ring_sizer/views/navbar_page.dart';
 
 class PremiumPage extends StatelessWidget {
   const PremiumPage({super.key});
@@ -90,20 +92,25 @@ class PremiumPage extends StatelessWidget {
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(left: 27.5),
-                          padding: const EdgeInsets.only(bottom: 1),
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(color: primaryColor),
+                        InkWell(
+                          onTap: () {
+                            NavigatorKey.pushReplacement(const NavBarPage());
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(left: 27.5),
+                            padding: const EdgeInsets.only(bottom: 1),
+                            decoration: const BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(color: primaryColor),
+                              ),
                             ),
-                          ),
-                          child: Text(
-                            'No payment Now',
-                            style: GoogleFonts.lora(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                              color: textColor.withOpacity(.5),
+                            child: Text(
+                              'No payment Now',
+                              style: GoogleFonts.lora(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w500,
+                                color: textColor.withOpacity(.5),
+                              ),
                             ),
                           ),
                         ),

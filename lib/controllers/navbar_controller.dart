@@ -1,7 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class NavBarController extends GetxController {
   static NavBarController get instance => Get.find();
+
+  late PageController pageController;
+
+  @override
+  void onInit() {
+    pageController = PageController();
+    super.onInit();
+  }
 
   // * ---------------------------------/ Variable Start /------------------------------
 
