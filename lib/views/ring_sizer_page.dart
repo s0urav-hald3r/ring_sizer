@@ -20,83 +20,91 @@ class RingSizerPage extends StatelessWidget {
           width: size.width,
           height: size.height,
           child: Column(children: [
-            const SizedBox(height: 10),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: MenuAppBar(),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              'Put the ring on the circle',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.lora(
-                fontSize: 24,
-                fontWeight: FontWeight.w400,
-                color: textColor,
-                letterSpacing: -1,
-              ),
-            ),
-            const SizedBox(height: 10),
-            const RingSizerBox(),
-            Transform.translate(
-              offset: const Offset(0, -45), // Move the Stack up by 50 pixels
-              child: Stack(children: [
-                ClipPath(
-                  clipper: RingSizerClipper(),
-                  child: Container(
-                    color: primaryColor,
-                    width: size.width,
-                    child: Column(children: [
-                      const SizedBox(height: 100),
-                      Text(
-                        'Use the slider to choose the size',
-                        style: GoogleFonts.raleway(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: secondaryColor,
-                        ),
-                      ),
-                      const SizedBox(height: 25),
-                      const FineTuneButton(),
-                      const SizedBox(height: 25),
-                      Container(
-                        width: size.width,
-                        height: 50,
-                        margin: const EdgeInsets.symmetric(horizontal: 40),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          gradient: elevated,
-                        ),
-                        child: ElevatedButton(
-                          child: Text(
-                            'Get the Ring Size',
-                            style: GoogleFonts.lora(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: textColor,
-                            ),
-                          ),
-                          onPressed: () {
-                            showModalBottomSheet(
-                                backgroundColor: Colors.transparent,
-                                barrierColor: Colors.white10,
-                                isDismissible: false,
-                                isScrollControlled: true,
-                                context: context,
-                                builder: (context) {
-                                  return const GetRingSize();
-                                });
-                          },
-                        ),
-                      ),
-                      const SizedBox(height: 45)
-                    ]),
+            Column(
+              children: [
+                const SizedBox(height: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: MenuAppBar(),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  'Put the ring on the circle',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lora(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w400,
+                    color: textColor,
+                    letterSpacing: -1,
                   ),
                 ),
-                SemiCircleSlider(
-                  initialValue: 12,
-                  divisions: 20,
-                  onChanged: (value) => debugPrint('value: $value'),
+                const SizedBox(height: 10),
+                const RingSizerBox(),
+              ],
+            ),
+            Expanded(
+              child: Stack(children: [
+                Transform.translate(
+                  offset: const Offset(0, -45),
+                  child: ClipPath(
+                    clipper: RingSizerClipper(),
+                    child: Container(
+                      color: primaryColor,
+                      width: size.width,
+                      child: Column(children: [
+                        const SizedBox(height: 90),
+                        Text(
+                          'Use the slider to choose the size',
+                          style: GoogleFonts.raleway(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: secondaryColor,
+                          ),
+                        ),
+                        const SizedBox(height: 25),
+                        const FineTuneButton(),
+                        const SizedBox(height: 25),
+                        Container(
+                          width: size.width,
+                          height: 50,
+                          margin: const EdgeInsets.symmetric(horizontal: 40),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: elevated,
+                          ),
+                          child: ElevatedButton(
+                            child: Text(
+                              'Get the Ring Size',
+                              style: GoogleFonts.lora(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: textColor,
+                              ),
+                            ),
+                            onPressed: () {
+                              showModalBottomSheet(
+                                  backgroundColor: Colors.transparent,
+                                  barrierColor: Colors.white10,
+                                  isDismissible: false,
+                                  isScrollControlled: true,
+                                  context: context,
+                                  builder: (context) {
+                                    return const GetRingSize();
+                                  });
+                            },
+                          ),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ),
+                Transform.translate(
+                  offset: const Offset(0, -45),
+                  child: SemiCircleSlider(
+                    initialValue: 12,
+                    divisions: 20,
+                    onChanged: (value) => debugPrint('value: $value'),
+                  ),
                 ),
               ]),
             ),
