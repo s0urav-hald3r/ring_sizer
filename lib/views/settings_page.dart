@@ -58,6 +58,7 @@ class SettingsPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Text(
           title,
+          textAlign: TextAlign.center,
           style: GoogleFonts.raleway(
             fontSize: 16,
             fontWeight: FontWeight.w500,
