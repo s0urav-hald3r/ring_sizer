@@ -42,3 +42,5 @@ const String hand = 'assets/images/hand.png';
 
 // Local storage keys
 const String storeCountryName = 'storeCountryName';
+const String isOnboardingDone = 'isOnboardingDone';
+const String isPremium = 'isPremium';

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/components/ad_section.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
+import 'package:ring_sizer/utils/local_storage.dart';
 import 'package:ring_sizer/views/navbar_page.dart';
 
 class PremiumPage extends StatelessWidget {
@@ -94,8 +95,10 @@ class PremiumPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         InkWell(
-                          onTap: () {
+                          onTap: () async {
                             if (Get.currentRoute == '/') {
+                              await LocalStorage.addData(
+                                  isOnboardingDone, true);
                               NavigatorKey.pushReplacement(const NavBarPage());
                             } else {
                               NavigatorKey.pop();
