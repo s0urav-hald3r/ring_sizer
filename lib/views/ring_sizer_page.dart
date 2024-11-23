@@ -43,10 +43,10 @@ class RingSizerPage extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: Stack(children: [
-                Transform.translate(
-                  offset: const Offset(0, -45),
-                  child: ClipPath(
+              child: Transform.translate(
+                offset: const Offset(0, -45),
+                child: Stack(children: [
+                  ClipPath(
                     clipper: RingSizerClipper(),
                     child: Container(
                       color: primaryColor,
@@ -97,16 +97,13 @@ class RingSizerPage extends StatelessWidget {
                       ]),
                     ),
                   ),
-                ),
-                Transform.translate(
-                  offset: const Offset(0, -45),
-                  child: SemiCircleSlider(
+                  SemiCircleSlider(
                     initialValue: 12,
                     divisions: 20,
                     onChanged: (value) => debugPrint('value: $value'),
                   ),
-                ),
-              ]),
+                ]),
+              ),
             ),
           ]),
         ),
