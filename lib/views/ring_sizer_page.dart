@@ -98,8 +98,8 @@ class RingSizerPage extends StatelessWidget {
                     ),
                   ),
                   SemiCircleSlider(
-                    initialValue: 12,
-                    divisions: 20,
+                    initialValue: 10,
+                    divisions: 26,
                     onChanged: (value) => debugPrint('value: $value'),
                   ),
                 ]),

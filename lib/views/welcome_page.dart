@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/config/constants.dart';
-import 'package:ring_sizer/controllers/navbar_controller.dart';
+import 'package:ring_sizer/controllers/onboarding_controller.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -59,7 +59,8 @@ class WelcomePage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        NavBarController.instance.pageController.animateToPage(
+                        OnboardingController.instance.pageController
+                            .animateToPage(
                           1,
                           duration: const Duration(milliseconds: 500),
                           curve: Curves.linear,

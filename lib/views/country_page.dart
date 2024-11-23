@@ -5,8 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/components/triangle_painter.dart';
 import 'package:ring_sizer/config/constants.dart';
-import 'package:ring_sizer/controllers/country_controller.dart';
-import 'package:ring_sizer/controllers/navbar_controller.dart';
+import 'package:ring_sizer/controllers/onboarding_controller.dart';
 import 'package:ring_sizer/country_data.dart';
 import 'package:ring_sizer/utils/local_storage.dart';
 
@@ -19,7 +18,7 @@ class CountryPage extends StatefulWidget {
 
 class _CountryPageState extends State<CountryPage> {
   final ScrollController _scrollController = ScrollController();
-  final controller = CountryController.instance;
+  final controller = OnboardingController.instance;
   Timer? _scrollEndTimer; // Timer to detect the end of scrolling
 
   @override
@@ -271,7 +270,7 @@ class _CountryPageState extends State<CountryPage> {
                         countryData[controller.highlightedIndex]['name'];
                     await LocalStorage.addData(storeCountryName, value);
 
-                    NavBarController.instance.pageController.animateToPage(
+                    OnboardingController.instance.pageController.animateToPage(
                       2,
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.linear,

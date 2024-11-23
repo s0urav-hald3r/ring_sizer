@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
-import 'package:ring_sizer/controllers/navbar_controller.dart';
+import 'package:ring_sizer/controllers/onboarding_controller.dart';
 import 'package:ring_sizer/views/converter_page.dart';
 import 'package:ring_sizer/views/finger_sizer_page.dart';
 import 'package:ring_sizer/views/ring_sizer_page.dart';
@@ -17,7 +17,7 @@ class NavBarPage extends StatefulWidget {
 }
 
 class _NavBarPageState extends State<NavBarPage> {
-  final controller = NavBarController.instance;
+  final controller = OnboardingController.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +86,7 @@ class NavBarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = NavBarController.instance;
+    final controller = OnboardingController.instance;
 
     return InkWell(
       onTap: () {

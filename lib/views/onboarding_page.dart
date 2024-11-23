@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ring_sizer/controllers/navbar_controller.dart';
+import 'package:ring_sizer/controllers/onboarding_controller.dart';
 import 'package:ring_sizer/views/country_page.dart';
 import 'package:ring_sizer/views/premium_page.dart';
 import 'package:ring_sizer/views/welcome_page.dart';
@@ -14,7 +14,7 @@ class OnboardingPage extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         child: PageView(
-            controller: NavBarController.instance.pageController,
+            controller: OnboardingController.instance.pageController,
             physics: const NeverScrollableScrollPhysics(),
             children: const [
               WelcomePage(),
