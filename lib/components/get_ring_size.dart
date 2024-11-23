@@ -195,7 +195,9 @@ class GetRingSize extends StatelessWidget {
                           ),
                         ),
                       ]),
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.addRing();
+                  },
                 ),
               ),
               Container(

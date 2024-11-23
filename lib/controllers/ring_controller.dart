@@ -1,4 +1,11 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ring_sizer/config/constants.dart';
+import 'package:ring_sizer/config/navigation.dart';
+import 'package:ring_sizer/models/saved_ring.dart';
+import 'package:ring_sizer/utils/local_storage.dart';
 
 class RingController extends GetxController {
   static RingController get instance => Get.find();
@@ -41,6 +48,22 @@ class RingController extends GetxController {
     initialValue = division ~/ 2;
     currentValue = division ~/ 2;
     updateDiameter();
+    retriveSavedRings();
+  }
+
+  Future<void> retriveSavedRings() async {
+    isLoading = true;
+    String jsonString = LocalStorage.getData(savedRingSize, KeyType.STR);
+
+    if (jsonString.isNotEmpty) {
+      List<dynamic> jsonList = jsonDecode(jsonString);
+      savedRingList = jsonList.map((json) => SavedRing.fromJson(json)).toList();
+    } else {
+      savedRingList = <SavedRing>[];
+    }
+    debugPrint('savedRingList: ${savedRingList.length}');
+
+    isLoading = false;
   }
 
   // Variables
@@ -49,8 +72,10 @@ class RingController extends GetxController {
   final RxInt _currentValue = 0.obs;
   final RxDouble _dpi = 0.0.obs;
   final RxDouble _diameterInPx = 0.0.obs;
+  final RxList<SavedRing> _savedRingList = <SavedRing>[].obs;
 
   final RxBool _showPlam = false.obs;
+  final RxBool _isLoading = false.obs;
 
   // Getters
   int get division => _division.value;
@@ -58,8 +83,10 @@ class RingController extends GetxController {
   int get currentValue => _currentValue.value;
   double get dpi => _dpi.value;
   double get diameterInPx => _diameterInPx.value;
+  List<SavedRing> get savedRingList => _savedRingList;
 
   bool get showPlam => _showPlam.value;
+  bool get isLoading => _isLoading.value;
 
   // Setters
   set division(int value) => _division.value = value;
@@ -67,8 +94,30 @@ class RingController extends GetxController {
   set currentValue(int value) => _currentValue.value = value;
   set dpi(double value) => _dpi.value = value;
   set diameterInPx(double value) => _diameterInPx.value = value;
+  set savedRingList(newData) => _savedRingList.value = newData;
 
   set showPlam(bool value) => _showPlam.value = value;
+  set isLoading(bool value) => _isLoading.value = value;
+
+  Future<void> addRing() async {
+    final savedRing = SavedRing(
+      size: ringChart[currentValue][0].toString(),
+      date: DateTime.now(),
+    );
+
+    _savedRingList.add(savedRing);
+
+    saveToLocal();
+
+    NavigatorKey.pop();
+  }
+
+  void saveToLocal() {
+    String jsonString =
+        jsonEncode(savedRingList.map((model) => model.toJson()).toList());
+
+    LocalStorage.addData(savedRingSize, jsonString);
+  }
 
   // update diameter based on slider value
   void updateDiameter() {
