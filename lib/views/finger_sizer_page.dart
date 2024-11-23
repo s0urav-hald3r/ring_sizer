@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/components/back_appbar.dart';
+import 'package:ring_sizer/components/get_ring_size.dart';
 
 import 'package:ring_sizer/components/semicircle_slider.dart';
 import 'package:ring_sizer/config/constants.dart';
@@ -26,37 +27,65 @@ class FingerSizerPage extends StatelessWidget {
           width: size.width,
           height: size.height,
           child: Column(children: [
-            Column(
-              children: [
-                const SizedBox(height: 10),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: BackAppBar(title: 'Finger Sizer'),
+            Column(children: [
+              const SizedBox(height: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: BackAppBar(title: 'Finger Sizer'),
+              ),
+              const SizedBox(height: 30),
+              Text(
+                'Determine ring size by finger',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.lora(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w400,
+                  color: textColor,
+                  letterSpacing: -1,
                 ),
-                const SizedBox(height: 30),
-                Text(
-                  'Determine ring size by finger',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.lora(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w400,
-                    color: textColor,
-                    letterSpacing: -1,
+              ),
+              const SizedBox(height: 10),
+              Text(
+                'Place your finger and adjust the slider\nto match its size',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.raleway(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: secondaryColor,
+                ),
+              ),
+              const SizedBox(height: 20),
+              Container(
+                width: 200,
+                height: 50,
+                margin: const EdgeInsets.symmetric(horizontal: 40),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  gradient: elevated,
+                ),
+                child: ElevatedButton(
+                  child: Text(
+                    'Get the Ring Size',
+                    style: GoogleFonts.lora(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: textColor,
+                    ),
                   ),
+                  onPressed: () {
+                    showModalBottomSheet(
+                        backgroundColor: Colors.transparent,
+                        barrierColor: Colors.white10,
+                        isDismissible: false,
+                        isScrollControlled: true,
+                        context: context,
+                        builder: (context) {
+                          return const GetRingSize();
+                        });
+                  },
                 ),
-                const SizedBox(height: 10),
-                Text(
-                  'Place your finger and adjust the slider\nto match its size',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.raleway(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: secondaryColor,
-                  ),
-                ),
-                const SizedBox(height: 20),
-              ],
-            ),
+              ),
+            ]),
             Expanded(
               child: Stack(children: [
                 ClipPath(
