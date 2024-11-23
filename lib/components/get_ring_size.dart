@@ -55,7 +55,7 @@ class GetRingSize extends StatelessWidget {
                 height: 200,
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 20, left: 20),
+                padding: const EdgeInsets.only(top: 20),
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
                   Text(
                     '5',
@@ -177,18 +177,20 @@ class GetRingSize extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     color: secondaryColor),
                 child: ElevatedButton(
-                  child: Row(children: [
-                    SvgPicture.asset(saveIcon),
-                    const SizedBox(width: 10),
-                    Text(
-                      'Save',
-                      style: GoogleFonts.lora(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ]),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(saveIcon),
+                        const SizedBox(width: 10),
+                        Text(
+                          'Save',
+                          style: GoogleFonts.lora(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ]),
                   onPressed: () {},
                 ),
               ),
@@ -199,18 +201,20 @@ class GetRingSize extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     color: secondaryColor),
                 child: ElevatedButton(
-                  child: Row(children: [
-                    SvgPicture.asset(convertIcon),
-                    const SizedBox(width: 10),
-                    Text(
-                      'Convert',
-                      style: GoogleFonts.lora(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ]),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(convertIcon),
+                        const SizedBox(width: 10),
+                        Text(
+                          'Convert',
+                          style: GoogleFonts.lora(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ]),
                   onPressed: () {},
                 ),
               ),

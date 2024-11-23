@@ -6,6 +6,7 @@ import 'package:ring_sizer/components/back_appbar.dart';
 
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
+import 'package:ring_sizer/views/card_info_page.dart';
 
 class CardDemoPage extends StatelessWidget {
   const CardDemoPage({super.key});
@@ -140,7 +141,9 @@ class CardDemoPage extends StatelessWidget {
                                 ),
                               ),
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  NavigatorKey.push(const CardInfoPage());
+                                },
                                 child: Container(
                                   width: 45,
                                   height: 45,
