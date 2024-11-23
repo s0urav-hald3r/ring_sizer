@@ -30,6 +30,7 @@ const String navURingIcon = 'assets/icons/navURingIcon.svg';
 const String saveIcon = 'assets/icons/saveIcon.svg';
 const String settingsIcon = 'assets/icons/settingsIcon.svg';
 const String exchangeIcon = 'assets/icons/exchangeIcon.svg';
+const String bothArrow = 'assets/icons/bothArrow.svg';
 
 // Images
 const String cardHolder = 'assets/images/cardHolder.png';

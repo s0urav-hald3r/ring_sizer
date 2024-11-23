@@ -89,6 +89,25 @@ class CardDemoPage extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            Positioned(
+                              top: 300,
+                              child: SvgPicture.asset(bothArrow),
+                            ),
+                            const Positioned(
+                              top: 375,
+                              child: CircleAvatar(
+                                backgroundColor: Color(0xFFFF0000),
+                                radius: 32,
+                                child: CircleAvatar(
+                                  radius: 31,
+                                  backgroundColor: Color(0xFFFFFFFF),
+                                  child: CircleAvatar(
+                                    backgroundColor: Color(0xFFFF0000),
+                                    radius: 28,
+                                  ),
+                                ),
+                              ),
+                            )
                           ]),
                     ),
                     Positioned(
