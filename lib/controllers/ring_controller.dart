@@ -86,4 +86,32 @@ class RingController extends GetxController {
     currentValue--;
     updateDiameter();
   }
+
+  bool isUSFloatValue() {
+    return ringChart[currentValue][1].split(' ').length > 1;
+  }
+
+  String getUSFirstValue() {
+    return ringChart[currentValue][1].split(' ')[0];
+  }
+
+  String getUSSecondValue() {
+    return ringChart[currentValue][1].split(' ')[1];
+  }
+
+  String getUSValue() {
+    return ringChart[currentValue][1].toString();
+  }
+
+  String getUKValue() {
+    return ringChart[currentValue][2].toString();
+  }
+
+  String getInch() {
+    return (ringChart[currentValue][0] / 25.4).toStringAsFixed(2);
+  }
+
+  String getCemi() {
+    return (ringChart[currentValue][0] / 10).toStringAsFixed(2);
+  }
 }

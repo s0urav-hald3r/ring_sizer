@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
+import 'package:ring_sizer/controllers/ring_controller.dart';
 
 class GetRingSize extends StatelessWidget {
   const GetRingSize({super.key});
@@ -12,6 +13,7 @@ class GetRingSize extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final controller = RingController.instance;
 
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
@@ -58,23 +60,25 @@ class GetRingSize extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 20),
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
                   Text(
-                    '5',
+                    controller.getUSFirstValue(),
                     style: GoogleFonts.raleway(
                       fontSize: 36,
                       fontWeight: FontWeight.w700,
                       color: textColor,
                     ),
                   ),
-                  const SizedBox(width: 2.5),
-                  Text(
-                    '1/2',
-                    style: GoogleFonts.raleway(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                      color: secondaryColor,
-                      height: -1, // Adjust this value
+                  if (controller.isUSFloatValue()) ...[
+                    const SizedBox(width: 2.5),
+                    Text(
+                      controller.getUSSecondValue(),
+                      style: GoogleFonts.raleway(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: secondaryColor,
+                        height: -1, // Adjust this value
+                      ),
                     ),
-                  ),
+                  ]
                 ]),
               )
             ]),
@@ -101,7 +105,7 @@ class GetRingSize extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        '5',
+                        controller.getUSValue(),
                         style: GoogleFonts.raleway(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
@@ -120,7 +124,7 @@ class GetRingSize extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        '5',
+                        controller.getUKValue(),
                         style: GoogleFonts.raleway(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
@@ -139,7 +143,7 @@ class GetRingSize extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        '5',
+                        controller.getInch(),
                         style: GoogleFonts.raleway(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
@@ -158,7 +162,7 @@ class GetRingSize extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        '5',
+                        controller.getCemi(),
                         style: GoogleFonts.raleway(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
