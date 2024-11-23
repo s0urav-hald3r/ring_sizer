@@ -35,13 +35,14 @@ class _SemiCircleSliderState extends State<SemiCircleSlider> {
       child: LayoutBuilder(
         builder: (context, constraints) {
           final arcWidth = constraints.maxWidth;
-          final arcHeight = 200.0; // Height of the bezier curve
+          const arcHeight = 200.0; // Height of the bezier curve
           final arcRect = Rect.fromLTRB(0, 0, arcWidth, arcHeight);
 
           return GestureDetector(
             onPanUpdate: (details) {
               final dx = details.localPosition.dx.clamp(0, arcWidth);
               final t = dx / arcWidth;
+              // ignore: unused_local_variable
               final dy = quadraticBezierY(t, arcRect.top, arcRect.height * 0.5,
                   arcRect.top); // Adjusted curve height
 
@@ -60,7 +61,7 @@ class _SemiCircleSliderState extends State<SemiCircleSlider> {
                 arcRect: arcRect,
                 nubPosition: value / (widget.divisions - 1),
               ),
-              child: SizedBox(height: arcHeight),
+              child: const SizedBox(height: arcHeight),
             ),
           );
         },

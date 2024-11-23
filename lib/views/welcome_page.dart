@@ -62,8 +62,8 @@ class WelcomePage extends StatelessWidget {
                         OnboardingController.instance.pageController
                             .animateToPage(
                           1,
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.linear,
+                          duration: const Duration(milliseconds: 400),
+                          curve: Curves.fastEaseInToSlowEaseOut,
                         );
                       },
                     ),

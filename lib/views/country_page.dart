@@ -272,8 +272,8 @@ class _CountryPageState extends State<CountryPage> {
 
                     OnboardingController.instance.pageController.animateToPage(
                       2,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.linear,
+                      duration: const Duration(milliseconds: 400),
+                      curve: Curves.fastEaseInToSlowEaseOut,
                     );
                   },
                 ),
