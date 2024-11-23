@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/config/constants.dart';
+import 'package:ring_sizer/controllers/ring_controller.dart';
 
 class FineTuneButton extends StatelessWidget {
   const FineTuneButton({super.key});
@@ -10,7 +11,9 @@ class FineTuneButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       InkWell(
-        onTap: () {},
+        onTap: () {
+          RingController.instance.decrement();
+        },
         child: Container(
           width: 45,
           height: 45,
@@ -35,7 +38,9 @@ class FineTuneButton extends StatelessWidget {
       ),
       const SizedBox(width: 20),
       InkWell(
-        onTap: () {},
+        onTap: () {
+          RingController.instance.increment();
+        },
         child: Container(
           width: 45,
           height: 45,

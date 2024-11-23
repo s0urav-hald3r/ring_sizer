@@ -6,6 +6,7 @@ import 'package:ring_sizer/components/menu_appbar.dart';
 import 'package:ring_sizer/components/ring_sizer_box.dart';
 import 'package:ring_sizer/components/semicircle_slider.dart';
 import 'package:ring_sizer/config/constants.dart';
+import 'package:ring_sizer/controllers/ring_controller.dart';
 
 class RingSizerPage extends StatelessWidget {
   const RingSizerPage({super.key});
@@ -13,6 +14,7 @@ class RingSizerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final controller = RingController.instance;
 
     return Scaffold(
       body: SafeArea(
@@ -51,57 +53,60 @@ class RingSizerPage extends StatelessWidget {
                     child: Container(
                       color: primaryColor,
                       width: size.width,
-                      child: Column(children: [
-                        const SizedBox(height: 90),
-                        Text(
-                          'Use the slider to choose the size',
-                          style: GoogleFonts.raleway(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: secondaryColor,
-                          ),
-                        ),
-                        const SizedBox(height: 25),
-                        const FineTuneButton(),
-                        const SizedBox(height: 25),
-                        Container(
-                          width: size.width,
-                          height: 50,
-                          margin: const EdgeInsets.symmetric(horizontal: 40),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            gradient: elevated,
-                          ),
-                          child: ElevatedButton(
-                            child: Text(
-                              'Get the Ring Size',
-                              style: GoogleFonts.lora(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: textColor,
-                              ),
-                            ),
-                            onPressed: () {
-                              showModalBottomSheet(
-                                  backgroundColor: Colors.transparent,
-                                  barrierColor: Colors.white10,
-                                  isDismissible: false,
-                                  isScrollControlled: true,
-                                  context: context,
-                                  builder: (context) {
-                                    return const GetRingSize();
-                                  });
-                            },
-                          ),
-                        ),
-                      ]),
                     ),
                   ),
                   SemiCircleSlider(
-                    initialValue: 10,
-                    divisions: 26,
-                    onChanged: (value) => debugPrint('value: $value'),
+                    initialValue: controller.initialValue,
+                    divisions: controller.division,
+                    onChanged: (value) {
+                      controller.currentValue = value;
+                      controller.updateDiameter();
+                    },
                   ),
+                  Column(children: [
+                    const SizedBox(height: 90),
+                    Text(
+                      'Use the slider to choose the size',
+                      style: GoogleFonts.raleway(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: secondaryColor,
+                      ),
+                    ),
+                    const SizedBox(height: 25),
+                    const FineTuneButton(),
+                    const SizedBox(height: 25),
+                    Container(
+                      width: size.width,
+                      height: 50,
+                      margin: const EdgeInsets.symmetric(horizontal: 40),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        gradient: elevated,
+                      ),
+                      child: ElevatedButton(
+                        child: Text(
+                          'Get the Ring Size',
+                          style: GoogleFonts.lora(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: textColor,
+                          ),
+                        ),
+                        onPressed: () {
+                          showModalBottomSheet(
+                              backgroundColor: Colors.transparent,
+                              barrierColor: Colors.white10,
+                              isDismissible: false,
+                              isScrollControlled: true,
+                              context: context,
+                              builder: (context) {
+                                return const GetRingSize();
+                              });
+                        },
+                      ),
+                    ),
+                  ]),
                 ]),
               ),
             ),

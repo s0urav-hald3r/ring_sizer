@@ -5,7 +5,10 @@ import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
 import 'package:ring_sizer/controllers/converter_controller.dart';
 import 'package:ring_sizer/controllers/onboarding_controller.dart';
+import 'package:ring_sizer/controllers/ring_controller.dart';
 import 'package:ring_sizer/controllers/settings_controller.dart';
+import 'package:ring_sizer/utils/local_storage.dart';
+import 'package:ring_sizer/views/navbar_page.dart';
 import 'package:ring_sizer/views/onboarding_page.dart';
 
 void main() async {
@@ -16,6 +19,7 @@ void main() async {
 
   // Injecting dependencies
   Get.lazyPut(() => OnboardingController());
+  Get.lazyPut(() => RingController());
   Get.lazyPut(() => ConverterController());
   Get.lazyPut(() => SettingsController());
 
@@ -49,7 +53,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       navigatorKey: NavigatorKey.navigatorKey,
-      home: const OnboardingPage(),
+      home: LocalStorage.getData(isOnboardingDone, KeyType.BOOL)
+          ? const NavBarPage()
+          : const OnboardingPage(),
     );
   }
 }
