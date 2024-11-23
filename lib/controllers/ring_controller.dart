@@ -50,6 +50,8 @@ class RingController extends GetxController {
   final RxDouble _dpi = 0.0.obs;
   final RxDouble _diameterInPx = 0.0.obs;
 
+  final RxBool _showPlam = false.obs;
+
   // Getters
   int get division => _division.value;
   int get initialValue => _initialValue.value;
@@ -57,12 +59,16 @@ class RingController extends GetxController {
   double get dpi => _dpi.value;
   double get diameterInPx => _diameterInPx.value;
 
+  bool get showPlam => _showPlam.value;
+
   // Setters
   set division(int value) => _division.value = value;
   set initialValue(int value) => _initialValue.value = value;
   set currentValue(int value) => _currentValue.value = value;
   set dpi(double value) => _dpi.value = value;
   set diameterInPx(double value) => _diameterInPx.value = value;
+
+  set showPlam(bool value) => _showPlam.value = value;
 
   // update diameter based on slider value
   void updateDiameter() {
