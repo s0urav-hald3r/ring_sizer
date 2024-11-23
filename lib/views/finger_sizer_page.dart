@@ -6,6 +6,8 @@ import 'package:ring_sizer/components/back_appbar.dart';
 
 import 'package:ring_sizer/components/semicircle_slider.dart';
 import 'package:ring_sizer/config/constants.dart';
+import 'package:ring_sizer/config/navigation.dart';
+import 'package:ring_sizer/views/card_demo_page.dart';
 
 class FingerSizerPage extends StatelessWidget {
   const FingerSizerPage({super.key});
@@ -68,6 +70,7 @@ class FingerSizerPage extends StatelessWidget {
                             children: [
                               DottedBorder(
                                 borderType: BorderType.RRect,
+                                dashPattern: const [5, 5],
                                 color: secondaryColor,
                                 radius: const Radius.circular(100),
                                 child: AnimatedContainer(
@@ -84,6 +87,7 @@ class FingerSizerPage extends StatelessWidget {
                                 top: 20,
                                 child: DottedBorder(
                                   borderType: BorderType.Circle,
+                                  dashPattern: const [5, 5],
                                   color: secondaryColor,
                                   child: AnimatedContainer(
                                     duration: const Duration(milliseconds: 250),
@@ -110,9 +114,9 @@ class FingerSizerPage extends StatelessWidget {
                         child: Container(
                           width: size.width,
                           padding: EdgeInsets.fromLTRB(
-                            25,
+                            40,
                             0,
-                            25,
+                            40,
                             MediaQuery.of(context).padding.bottom,
                           ),
                           child: Row(
@@ -120,7 +124,9 @@ class FingerSizerPage extends StatelessWidget {
                               children: [
                                 Column(children: [
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      NavigatorKey.push(const CardDemoPage());
+                                    },
                                     child: Container(
                                       width: 45,
                                       height: 45,

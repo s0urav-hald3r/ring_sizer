@@ -6,7 +6,12 @@ import 'package:ring_sizer/config/navigation.dart';
 
 class BackAppBar extends StatelessWidget {
   final String title;
-  const BackAppBar({super.key, this.title = ''});
+  final bool invertColor;
+  const BackAppBar({
+    super.key,
+    this.title = '',
+    this.invertColor = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +27,7 @@ class BackAppBar extends StatelessWidget {
           height: 45,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: primaryColor,
+            color: invertColor ? Colors.white : primaryColor,
           ),
           child: Center(
             child: SvgPicture.asset(backIcon),
