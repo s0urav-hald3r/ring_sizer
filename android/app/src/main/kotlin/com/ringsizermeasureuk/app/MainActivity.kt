@@ -1,4 +1,4 @@
-package com.example.ring_sizer
+package com.ringsizermeasureuk.app
 
 import io.flutter.embedding.android.FlutterActivity
 
