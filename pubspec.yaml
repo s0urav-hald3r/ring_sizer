@@ -44,10 +44,13 @@ dependencies:
   skeletonizer: ^1.4.2
   intl: ^0.19.0
   dropdown_button2: ^2.3.9
+  flutter_native_splash: ^2.4.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  change_app_package_name: ^1.4.0
+  flutter_launcher_icons: ^0.14.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -55,6 +58,24 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
+
+# App Icon
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo/appIcon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
+# Splash Icon
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/logo/appIcon.png
+  android_12:
+    color: "#ffffff"
+    image: assets/logo/appIcon.png
+  android: false
+  ios: true
+  web: false
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -70,6 +91,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/logo/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
