@@ -5,6 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
+import 'package:ring_sizer/controllers/converter_controller.dart';
+import 'package:ring_sizer/controllers/onboarding_controller.dart';
 import 'package:ring_sizer/controllers/ring_controller.dart';
 
 class GetRingSize extends StatelessWidget {
@@ -14,6 +16,7 @@ class GetRingSize extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final controller = RingController.instance;
+    final converterController = ConverterController.instance;
 
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
@@ -96,7 +99,7 @@ class GetRingSize extends StatelessWidget {
                   children: [
                     Column(children: [
                       Text(
-                        'US',
+                        US,
                         style: GoogleFonts.lora(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -115,7 +118,7 @@ class GetRingSize extends StatelessWidget {
                     ]),
                     Column(children: [
                       Text(
-                        'AU/UK',
+                        AUUK,
                         style: GoogleFonts.lora(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -221,7 +224,20 @@ class GetRingSize extends StatelessWidget {
                           ),
                         ),
                       ]),
-                  onPressed: () {},
+                  onPressed: () {
+                    NavigatorKey.pop();
+                    converterController.from = US;
+                    converterController.to = AUUK;
+                    converterController.ringSizeList = converterController
+                        .ringChart
+                        .map((ring) => ring[1].toString())
+                        .toList();
+                    converterController.selectedSize =
+                        controller.ringChart[controller.currentValue][1];
+
+                    Future.delayed(const Duration(milliseconds: 500),
+                        () => OnboardingController.instance.screenIndex = 2);
+                  },
                 ),
               ),
             ])

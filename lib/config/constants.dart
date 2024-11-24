@@ -46,3 +46,6 @@ const String storeCountryName = 'storeCountryName';
 const String savedRingSize = 'savedRingSize';
 const String isOnboardingDone = 'isOnboardingDone';
 const String isPremium = 'isPremium';
+
+const String US = 'US';
+const String AUUK = 'AU/UK';

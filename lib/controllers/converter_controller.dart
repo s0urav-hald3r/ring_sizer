@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:ring_sizer/config/constants.dart';
 
 class ConverterController extends GetxController {
   static ConverterController get instance => Get.find();
@@ -42,8 +43,8 @@ class ConverterController extends GetxController {
   }
 
   // Variables
-  final RxString _from = 'US'.obs;
-  final RxString _to = 'AU/UK'.obs;
+  final RxString _from = US.obs;
+  final RxString _to = AUUK.obs;
   final RxString _selectedSize = ''.obs;
   final RxString _convertSize = ''.obs;
 
@@ -71,21 +72,21 @@ class ConverterController extends GetxController {
     to = from;
     from = temp;
 
-    if (from == 'US' && to == 'AU/UK') {
+    if (from == US && to == AUUK) {
       ringSizeList = ringChart.map((ring) => ring[1].toString()).toList();
       selectedSize = ringSizeList.first;
     }
-    if (from == 'AU/UK' && to == 'US') {
+    if (from == AUUK && to == US) {
       ringSizeList = ringChart.map((ring) => ring[2].toString()).toList();
       selectedSize = ringSizeList.first;
     }
   }
 
   void convertRingSize() {
-    if (from == 'US' && to == 'AU/UK') {
+    if (from == US && to == AUUK) {
       convertSize = ringChart.firstWhere((ring) => ring[1] == selectedSize)[2];
     }
-    if (from == 'AU/UK' && to == 'US') {
+    if (from == AUUK && to == US) {
       convertSize = ringChart.firstWhere((ring) => ring[2] == selectedSize)[1];
     }
   }
