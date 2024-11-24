@@ -25,7 +25,7 @@ class ConverterSection extends StatelessWidget {
         ),
         child: Obx(
           () => Text(
-            controller.to,
+            controller.from,
             style: GoogleFonts.montaga(
               fontSize: 18,
               fontWeight: FontWeight.w400,
@@ -50,7 +50,7 @@ class ConverterSection extends StatelessWidget {
         ),
         child: Obx(
           () => Text(
-            controller.from,
+            controller.to,
             style: GoogleFonts.montaga(
               fontSize: 18,
               fontWeight: FontWeight.w400,

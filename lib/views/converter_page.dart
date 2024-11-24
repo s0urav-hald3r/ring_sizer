@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/components/converter_clipper.dart';
 import 'package:ring_sizer/components/converter_painter.dart';
 import 'package:ring_sizer/components/converter_section.dart';
+import 'package:ring_sizer/components/custom_drop_down_button.dart';
 import 'package:ring_sizer/components/settings_appbar.dart';
 import 'package:ring_sizer/config/constants.dart';
+import 'package:ring_sizer/controllers/converter_controller.dart';
 
 class ConverterPage extends StatelessWidget {
   const ConverterPage({super.key});
@@ -12,6 +15,7 @@ class ConverterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final controller = ConverterController.instance;
 
     return Scaffold(
       body: SafeArea(
@@ -48,13 +52,13 @@ class ConverterPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: Column(children: [
                       const SizedBox(height: 100),
-                      Container(
-                        height: 85,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: secondaryColor.withOpacity(.5),
-                          ),
+                      Obx(
+                        () => CustomDropDownButton(
+                          items: controller.ringSizeList,
+                          selectedValue: controller.selectedSize,
+                          onChanged: (value) {
+                            controller.selectedSize = value;
+                          },
                         ),
                       ),
                       const SizedBox(height: 40),
@@ -76,15 +80,44 @@ class ConverterPage extends StatelessWidget {
                               color: textColor,
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.convertRingSize();
+                          },
                         ),
                       ),
                       const SizedBox(height: 25),
-                      Container(
-                        height: 85,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: secondaryColor),
+                      Obx(
+                        () => Container(
+                          height: 85,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: secondaryColor),
+                          ),
+                          child: Center(
+                            child:
+                                Row(mainAxisSize: MainAxisSize.min, children: [
+                              Text(
+                                controller.getRingFirstValue(),
+                                style: GoogleFonts.raleway(
+                                  fontSize: 36,
+                                  fontWeight: FontWeight.w700,
+                                  color: textColor,
+                                ),
+                              ),
+                              if (controller.isRingFloatValue()) ...[
+                                const SizedBox(width: 2.5),
+                                Text(
+                                  controller.getRingSecondValue()!,
+                                  style: GoogleFonts.raleway(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w400,
+                                    color: secondaryColor,
+                                    height: -1, // Adjust this value
+                                  ),
+                                ),
+                              ]
+                            ]),
+                          ),
                         ),
                       ),
                     ]),
