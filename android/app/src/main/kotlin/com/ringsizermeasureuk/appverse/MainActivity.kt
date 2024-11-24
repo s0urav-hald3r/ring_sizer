@@ -1,4 +1,4 @@
-package com.ringsizermeasureuk.app
+package com.ringsizermeasureuk.appverse
 
 import io.flutter.embedding.android.FlutterActivity
 
