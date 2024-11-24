@@ -234,6 +234,7 @@ class GetRingSize extends StatelessWidget {
                         .toList();
                     converterController.selectedSize =
                         controller.ringChart[controller.currentValue][1];
+                    converterController.convertRingSize();
 
                     Future.delayed(const Duration(milliseconds: 500),
                         () => OnboardingController.instance.screenIndex = 2);

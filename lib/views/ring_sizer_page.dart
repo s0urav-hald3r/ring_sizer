@@ -60,6 +60,7 @@ class RingSizerPage extends StatelessWidget {
                     divisions: controller.division,
                     onChanged: (value) {
                       controller.currentValue = value;
+                      controller.initialValue = value;
                       controller.updateDiameter();
                     },
                   ),

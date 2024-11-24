@@ -255,6 +255,7 @@ class FingerSizerPage extends StatelessWidget {
                   divisions: controller.division,
                   onChanged: (value) {
                     controller.currentValue = value;
+                    controller.initialValue = value;
                     controller.updateDiameter();
                   },
                 ),
