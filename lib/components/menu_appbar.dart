@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
+import 'package:ring_sizer/views/premium_page.dart';
 import 'package:ring_sizer/views/settings_page.dart';
 
 class MenuAppBar extends StatelessWidget {
@@ -36,15 +37,20 @@ class MenuAppBar extends StatelessWidget {
           color: secondaryColor,
         ),
       ),
-      Container(
-        width: 45,
-        height: 45,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: primaryColor,
-        ),
-        child: Center(
-          child: SvgPicture.asset(menuIcon),
+      InkWell(
+        onTap: () {
+          NavigatorKey.push(const PremiumPage());
+        },
+        child: Container(
+          width: 45,
+          height: 45,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: primaryColor,
+          ),
+          child: Center(
+            child: SvgPicture.asset(premiumIcon),
+          ),
         ),
       )
     ]);
