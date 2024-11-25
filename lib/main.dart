@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -54,6 +55,11 @@ void main() async {
   Get.lazyPut(() => RingController());
   Get.lazyPut(() => ConverterController());
   Get.put(SettingsController());
+
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
   // whenever your initialization is completed, remove the splash screen:
   FlutterNativeSplash.remove();
