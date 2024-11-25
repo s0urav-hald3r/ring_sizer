@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
 import 'package:ring_sizer/models/saved_ring.dart';
@@ -9,6 +10,8 @@ import 'package:ring_sizer/utils/local_storage.dart';
 
 class RingController extends GetxController {
   static RingController get instance => Get.find();
+
+  final description = TextEditingController();
 
   // Ring size chart
   final List<List<dynamic>> ringChart = [
@@ -100,8 +103,27 @@ class RingController extends GetxController {
   set isLoading(bool value) => _isLoading.value = value;
 
   Future<void> addRing() async {
+    if (description.text.isEmpty) {
+      Get.snackbar('', '',
+          icon: const Icon(Icons.error),
+          shouldIconPulse: true,
+          titleText: Text(
+            'Warning',
+            style: GoogleFonts.raleway(
+                fontSize: 16, color: textColor, fontWeight: FontWeight.bold),
+          ),
+          messageText: Text(
+            'Add some description!',
+            style: GoogleFonts.raleway(fontSize: 14, color: textColor),
+          ),
+          backgroundColor: Colors.white,
+          snackPosition: SnackPosition.BOTTOM);
+      return;
+    }
+
     final savedRing = SavedRing(
       size: ringChart[currentValue][0].toString(),
+      description: description.text,
       date: DateTime.now(),
     );
 

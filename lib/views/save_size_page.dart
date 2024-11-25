@@ -22,7 +22,7 @@ class SaveSizePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(children: [
             const SizedBox(height: 10),
-            const BackAppBar(title: 'Save Size'),
+            const BackAppBar(title: 'Saved Size'),
             Expanded(
               child: ListView.separated(
                   separatorBuilder: (context, index) {
@@ -42,22 +42,37 @@ class SaveSizePage extends StatelessWidget {
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      '${ring.size} mm',
+                                      style: GoogleFonts.lora(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w400,
+                                        color: textColor,
+                                      ),
+                                    ),
+                                    Text(
+                                      DateFormat("dd MM yyyy hh:mm:ss a")
+                                          .format(ring.date ??
+                                              DateTime.now().toLocal()),
+                                      style: GoogleFonts.raleway(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        color: secondaryColor,
+                                      ),
+                                    ),
+                                  ]),
+                              const SizedBox(height: 10),
                               Text(
-                                '${ring.size} mm',
+                                ring.description ?? '',
                                 style: GoogleFonts.lora(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w400,
-                                  color: textColor,
-                                ),
-                              ),
-                              const SizedBox(height: 5),
-                              Text(
-                                DateFormat("dd MM yyyy hh:mm:ss a").format(
-                                    ring.date ?? DateTime.now().toLocal()),
-                                style: GoogleFonts.raleway(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
-                                  color: secondaryColor,
+                                  color: textColor,
                                 ),
                               ),
                             ]),

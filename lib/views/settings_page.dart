@@ -36,7 +36,7 @@ class SettingsPage extends StatelessWidget {
                       });
                     }),
                     const Divider(height: 1, color: primaryColor),
-                    menuOption('Save Size', () {
+                    menuOption('Saved Size', () {
                       NavigatorKey.push(const SaveSizePage());
                     }),
                     const Divider(height: 1, color: primaryColor),

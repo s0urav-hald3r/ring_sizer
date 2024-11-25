@@ -1,8 +1,10 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ring_sizer/components/add_description.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
 import 'package:ring_sizer/controllers/converter_controller.dart';
@@ -199,7 +201,15 @@ class GetRingSize extends StatelessWidget {
                         ),
                       ]),
                   onPressed: () {
-                    controller.addRing();
+                    showDialog(
+                        barrierColor: Colors.white10,
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) {
+                          return const Dialog(child: AddDescription());
+                        }).then((_) {
+                      NavigatorKey.pop();
+                    });
                   },
                 ),
               ),
