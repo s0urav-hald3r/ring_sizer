@@ -1,4 +1,6 @@
 List<Map<String, dynamic>> countryData = [
+  {"name": "", "flag": "", "code": "", "dial_code": ""},
+  {"name": "", "flag": "", "code": "", "dial_code": ""},
   {"name": "Australia", "flag": "🇦🇺", "code": "AU", "dial_code": "+61"},
   {"name": "Germany", "flag": "🇩🇪", "code": "DE", "dial_code": "+49"},
   {"name": "India", "flag": "🇮🇳", "code": "IN", "dial_code": "+91"},

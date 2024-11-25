@@ -34,8 +34,34 @@ class _CountryPageState extends State<CountryPage> {
 
     // Highlight the initial middle element
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      scrollToIndex(4); // Replace with your desired index
       highlightInitialItem();
     });
+  }
+
+  void scrollToIndex(int index) {
+    if (index >= 0 && index < countryData.length) {
+      final GlobalKey key = countryData[index]['key'] as GlobalKey;
+      final RenderBox? box =
+          key.currentContext?.findRenderObject() as RenderBox?;
+
+      if (box != null) {
+        final double itemPosition = box.localToGlobal(Offset.zero).dy;
+        final double screenHeight = MediaQuery.of(context).size.height;
+        final double middleOfScreen = screenHeight / 2;
+        final double offset =
+            itemPosition - middleOfScreen + (box.size.height / 2);
+
+        _scrollController.animateTo(
+          offset.clamp(
+            _scrollController.position.minScrollExtent,
+            _scrollController.position.maxScrollExtent,
+          ),
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.linear,
+        );
+      }
+    }
   }
 
   void highlightInitialItem() {
@@ -183,6 +209,10 @@ class _CountryPageState extends State<CountryPage> {
                 child: ListView.separated(
                   controller: _scrollController,
                   itemBuilder: (context, index) {
+                    if (index == 0 || index == 1) {
+                      return const SizedBox(height: 90);
+                    }
+
                     return Container(
                       key: countryData[index]['key'],
                       child: ListTile(
@@ -218,6 +248,10 @@ class _CountryPageState extends State<CountryPage> {
                     );
                   },
                   separatorBuilder: (context, index) {
+                    if (index == 0 || index == 1) {
+                      return const SizedBox(height: 1);
+                    }
+
                     return Divider(
                       height: 1,
                       indent: 25,
