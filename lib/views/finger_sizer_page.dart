@@ -10,7 +10,10 @@ import 'package:ring_sizer/components/semicircle_slider.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
 import 'package:ring_sizer/controllers/ring_controller.dart';
+import 'package:ring_sizer/controllers/settings_controller.dart';
+import 'package:ring_sizer/utils/local_storage.dart';
 import 'package:ring_sizer/views/card_demo_page.dart';
+import 'package:ring_sizer/views/premium_page.dart';
 
 class FingerSizerPage extends StatelessWidget {
   const FingerSizerPage({super.key});
@@ -73,15 +76,22 @@ class FingerSizerPage extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    showModalBottomSheet(
-                        backgroundColor: Colors.transparent,
-                        barrierColor: Colors.white10,
-                        isDismissible: false,
-                        isScrollControlled: true,
-                        context: context,
-                        builder: (context) {
-                          return const GetRingSize();
-                        });
+                    int count = LocalStorage.getData(checkCount, KeyType.INT);
+                    if (SettingsController.instance.ifPremium || count < 1) {
+                      count++;
+                      LocalStorage.addData(checkCount, count);
+                      showModalBottomSheet(
+                          backgroundColor: Colors.transparent,
+                          barrierColor: Colors.white10,
+                          isDismissible: false,
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (context) {
+                            return const GetRingSize();
+                          });
+                    } else {
+                      NavigatorKey.push(const PremiumPage());
+                    }
                   },
                 ),
               ),

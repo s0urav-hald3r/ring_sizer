@@ -9,6 +9,7 @@ import 'package:ring_sizer/config/navigation.dart';
 import 'package:ring_sizer/controllers/settings_controller.dart';
 import 'package:ring_sizer/utils/local_storage.dart';
 import 'package:ring_sizer/views/navbar_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PremiumPage extends StatelessWidget {
   const PremiumPage({super.key});
@@ -32,7 +33,7 @@ class PremiumPage extends StatelessWidget {
             child: Stack(children: [
               Image.asset(premiumPage),
               Positioned(
-                bottom: 0,
+                bottom: 20 + MediaQuery.of(context).padding.bottom,
                 child: SizedBox(
                   width: size.width,
                   child: Column(children: [
@@ -131,7 +132,7 @@ class PremiumPage extends StatelessWidget {
                                 ),
                               ),
                               child: Text(
-                                'No payment Now',
+                                'Limited Access',
                                 style: GoogleFonts.lora(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w500,
@@ -140,27 +141,90 @@ class PremiumPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Container(
-                            margin: const EdgeInsets.only(right: 27.5),
-                            padding: const EdgeInsets.only(bottom: 1),
-                            decoration: const BoxDecoration(
-                              border: Border(
-                                bottom: BorderSide(color: primaryColor),
+                          InkWell(
+                            onTap: () async {
+                              Uri uri = Uri.parse(privacyPolicy);
+                              if (!await launchUrl(
+                                uri,
+                                mode: LaunchMode.externalApplication,
+                              )) {
+                                throw Exception('Could not launch $uri');
+                              }
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(right: 27.5),
+                              padding: const EdgeInsets.only(bottom: 1),
+                              decoration: const BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(color: primaryColor),
+                                ),
+                              ),
+                              child: Text(
+                                'Privacy Policy',
+                                style: GoogleFonts.lora(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w500,
+                                  color: textColor.withOpacity(.5),
+                                ),
                               ),
                             ),
-                            child: Text(
-                              'Restore Purchase',
-                              style: GoogleFonts.lora(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w500,
-                                color: textColor.withOpacity(.5),
+                          ),
+                          InkWell(
+                            onTap: () async {
+                              Uri uri = Uri.parse(termsOfUse);
+                              if (!await launchUrl(
+                                uri,
+                                mode: LaunchMode.externalApplication,
+                              )) {
+                                throw Exception('Could not launch $uri');
+                              }
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(right: 27.5),
+                              padding: const EdgeInsets.only(bottom: 1),
+                              decoration: const BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(color: primaryColor),
+                                ),
+                              ),
+                              child: Text(
+                                'Terms of Use',
+                                style: GoogleFonts.lora(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w500,
+                                  color: textColor.withOpacity(.5),
+                                ),
                               ),
                             ),
                           ),
                         ]),
-                    SizedBox(
-                        height: 20 + MediaQuery.of(context).padding.bottom),
                   ]),
+                ),
+              ),
+              Positioned(
+                top: MediaQuery.of(context).padding.top,
+                right: 0,
+                child: InkWell(
+                  onTap: () {
+                    controller.restorePurchases();
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 27.5),
+                    padding: const EdgeInsets.only(bottom: 1),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(color: primaryColor),
+                      ),
+                    ),
+                    child: Text(
+                      'Restore',
+                      style: GoogleFonts.lora(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w500,
+                        color: textColor.withOpacity(.5),
+                      ),
+                    ),
+                  ),
                 ),
               ),
               if (controller.isLoading)

@@ -16,6 +16,7 @@ class SettingsController extends GetxController {
     ifPremium = LocalStorage.getData(isPremium, KeyType.BOOL);
     debugPrint('ifPremium: $ifPremium');
     fetchProducts();
+    checkSubscriptionStatus();
   }
 
   // Variables
@@ -164,6 +165,25 @@ class SettingsController extends GetxController {
       if (errorCode == PurchasesErrorCode.missingReceiptFileError) {
         debugPrint('PurchasesErrorCode.missingReceiptFileError');
       }
+    }
+  }
+
+  Future checkSubscriptionStatus() async {
+    try {
+      CustomerInfo customerInfo = await Purchases.getCustomerInfo();
+      debugPrint('customerInfo: $customerInfo');
+
+      // Replace "your_entitlement_id" with the ID of your entitlement in RevenueCat
+      EntitlementInfo? entitlement =
+          customerInfo.entitlements.all[entitlementID];
+      if (entitlement != null && entitlement.isActive) {
+        ifPremium = true;
+      } else {
+        ifPremium = false;
+      }
+    } catch (e) {
+      debugPrint("Error fetching subscription status: $e");
+      ifPremium = false;
     }
   }
 }

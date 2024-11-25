@@ -47,6 +47,7 @@ const String storeCountryName = 'storeCountryName';
 const String savedRingSize = 'savedRingSize';
 const String isOnboardingDone = 'isOnboardingDone';
 const String isPremium = 'isPremium';
+const String checkCount = 'checkCount';
 
 // TO DO: add the entitlement ID from the RevenueCat dashboard that is activated upon successful in-app purchase for the duration of the purchase.
 const entitlementID = 'premium_access';

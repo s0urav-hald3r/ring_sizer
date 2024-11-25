@@ -1,4 +1,9 @@
 List<Map<String, dynamic>> countryData = [
+  {"name": "Australia", "flag": "🇦🇺", "code": "AU", "dial_code": "+61"},
+  {"name": "Germany", "flag": "🇩🇪", "code": "DE", "dial_code": "+49"},
+  {"name": "India", "flag": "🇮🇳", "code": "IN", "dial_code": "+91"},
+  {"name": "United Kingdom", "flag": "🇬🇧", "code": "GB", "dial_code": "+44"},
+  {"name": "United States", "flag": "🇺🇸", "code": "US", "dial_code": "+1"},
   {"name": "Afghanistan", "flag": "🇦🇫", "code": "AF", "dial_code": "+93"},
   {"name": "Åland Islands", "flag": "🇦🇽", "code": "AX", "dial_code": "+358"},
   {"name": "Albania", "flag": "🇦🇱", "code": "AL", "dial_code": "+355"},
@@ -22,7 +27,6 @@ List<Map<String, dynamic>> countryData = [
   {"name": "Argentina", "flag": "🇦🇷", "code": "AR", "dial_code": "+54"},
   {"name": "Armenia", "flag": "🇦🇲", "code": "AM", "dial_code": "+374"},
   {"name": "Aruba", "flag": "🇦🇼", "code": "AW", "dial_code": "+297"},
-  {"name": "Australia", "flag": "🇦🇺", "code": "AU", "dial_code": "+61"},
   {"name": "Austria", "flag": "🇦🇹", "code": "AT", "dial_code": "+43"},
   {"name": "Azerbaijan", "flag": "🇦🇿", "code": "AZ", "dial_code": "+994"},
   {"name": "Bahamas", "flag": "🇧🇸", "code": "BS", "dial_code": "+1242"},
@@ -154,7 +158,6 @@ List<Map<String, dynamic>> countryData = [
   {"name": "Gabon", "flag": "🇬🇦", "code": "GA", "dial_code": "+241"},
   {"name": "Gambia", "flag": "🇬🇲", "code": "GM", "dial_code": "+220"},
   {"name": "Georgia", "flag": "🇬🇪", "code": "GE", "dial_code": "+995"},
-  {"name": "Germany", "flag": "🇩🇪", "code": "DE", "dial_code": "+49"},
   {"name": "Ghana", "flag": "🇬🇭", "code": "GH", "dial_code": "+233"},
   {"name": "Gibraltar", "flag": "🇬🇮", "code": "GI", "dial_code": "+350"},
   {"name": "Greece", "flag": "🇬🇷", "code": "GR", "dial_code": "+30"},
@@ -184,7 +187,6 @@ List<Map<String, dynamic>> countryData = [
   {"name": "Hong Kong", "flag": "🇭🇰", "code": "HK", "dial_code": "+852"},
   {"name": "Hungary", "flag": "🇭🇺", "code": "HU", "dial_code": "+36"},
   {"name": "Iceland", "flag": "🇮🇸", "code": "IS", "dial_code": "+354"},
-  {"name": "India", "flag": "🇮🇳", "code": "IN", "dial_code": "+91"},
   {"name": "Indonesia", "flag": "🇮🇩", "code": "ID", "dial_code": "+62"},
   {
     "name": "Iran, Islamic Republic of Persian Gulf",
@@ -437,8 +439,6 @@ List<Map<String, dynamic>> countryData = [
     "code": "AE",
     "dial_code": "+971"
   },
-  {"name": "United Kingdom", "flag": "🇬🇧", "code": "GB", "dial_code": "+44"},
-  {"name": "United States", "flag": "🇺🇸", "code": "US", "dial_code": "+1"},
   {"name": "Uruguay", "flag": "🇺🇾", "code": "UY", "dial_code": "+598"},
   {"name": "Uzbekistan", "flag": "🇺🇿", "code": "UZ", "dial_code": "+998"},
   {"name": "Vanuatu", "flag": "🇻🇺", "code": "VU", "dial_code": "+678"},
