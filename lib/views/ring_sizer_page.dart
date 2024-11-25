@@ -65,7 +65,7 @@ class RingSizerPage extends StatelessWidget {
                     },
                   ),
                   Column(children: [
-                    const SizedBox(height: 90),
+                    SizedBox(height: size.height * 0.12),
                     Text(
                       'Use the slider to choose the size',
                       style: GoogleFonts.raleway(
@@ -123,7 +123,7 @@ class RingSizerClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = Path();
 
-    path.quadraticBezierTo(size.width * 0.5, size.height * 0.33, size.width, 0);
+    path.quadraticBezierTo(size.width * 0.5, 100, size.width, 0);
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     path.close();

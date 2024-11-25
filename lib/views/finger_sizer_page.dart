@@ -98,7 +98,7 @@ class FingerSizerPage extends StatelessWidget {
                         Transform.translate(
                           offset: Offset(
                             (size.width / 2) - controller.diameterInPx / 2,
-                            120,
+                            size.height * 0.125,
                           ),
                           child: Stack(
                               alignment: Alignment.topCenter,
@@ -273,7 +273,7 @@ class FingerSizerClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = Path();
 
-    path.quadraticBezierTo(size.width * 0.5, size.height * 0.18, size.width, 0);
+    path.quadraticBezierTo(size.width * 0.5, 100, size.width, 0);
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     path.close();
