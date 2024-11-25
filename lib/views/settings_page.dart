@@ -8,6 +8,7 @@ import 'package:ring_sizer/controllers/settings_controller.dart';
 import 'package:ring_sizer/views/country_page.dart';
 import 'package:ring_sizer/views/premium_page.dart';
 import 'package:ring_sizer/views/save_size_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -44,11 +45,35 @@ class SettingsPage extends StatelessWidget {
                       NavigatorKey.push(const PremiumPage());
                     }),
                     const Divider(height: 1, color: primaryColor),
-                    menuOption('Contact Us', () {}),
+                    menuOption('Contact Us', () async {
+                      Uri uri = Uri.parse(support);
+                      if (!await launchUrl(
+                        uri,
+                        mode: LaunchMode.externalApplication,
+                      )) {
+                        throw Exception('Could not launch $uri');
+                      }
+                    }),
                     const Divider(height: 1, color: primaryColor),
-                    menuOption('Privacy Policy', () {}),
+                    menuOption('Privacy Policy', () async {
+                      Uri uri = Uri.parse(privacyPolicy);
+                      if (!await launchUrl(
+                        uri,
+                        mode: LaunchMode.externalApplication,
+                      )) {
+                        throw Exception('Could not launch $uri');
+                      }
+                    }),
                     const Divider(height: 1, color: primaryColor),
-                    menuOption('Terms of Use', () {}),
+                    menuOption('Terms of Use', () async {
+                      Uri uri = Uri.parse(termsOfUse);
+                      if (!await launchUrl(
+                        uri,
+                        mode: LaunchMode.externalApplication,
+                      )) {
+                        throw Exception('Could not launch $uri');
+                      }
+                    }),
                   ]),
             )
           ]),

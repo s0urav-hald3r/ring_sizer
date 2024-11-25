@@ -61,3 +61,9 @@ const appleApiKey = 'appl_PbTrffOezfQlXpvpFzFexaKJArz';
 
 const String US = 'US';
 const String AUUK = 'AU/UK';
+
+// Required urls
+const String privacyPolicy = 'https://sites.google.com/view/ringsizerpp/home';
+const String support = 'https://sites.google.com/view/ringsizerpp/supportr';
+const String termsOfUse =
+    'https://sites.google.com/view/ringsizerpp/terms-of-use';
