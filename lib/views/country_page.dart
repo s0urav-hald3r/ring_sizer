@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/components/triangle_painter.dart';
 import 'package:ring_sizer/config/constants.dart';
+import 'package:ring_sizer/config/navigation.dart';
 import 'package:ring_sizer/controllers/onboarding_controller.dart';
+import 'package:ring_sizer/controllers/settings_controller.dart';
 import 'package:ring_sizer/country_data.dart';
 import 'package:ring_sizer/utils/local_storage.dart';
 
@@ -268,13 +270,19 @@ class _CountryPageState extends State<CountryPage> {
                   onPressed: () async {
                     final value =
                         countryData[controller.highlightedIndex]['name'];
+                    SettingsController.instance.countryName = value;
                     await LocalStorage.addData(storeCountryName, value);
 
-                    OnboardingController.instance.pageController.animateToPage(
-                      2,
-                      duration: const Duration(milliseconds: 400),
-                      curve: Curves.fastEaseInToSlowEaseOut,
-                    );
+                    if (Get.currentRoute == '/') {
+                      OnboardingController.instance.pageController
+                          .animateToPage(
+                        2,
+                        duration: const Duration(milliseconds: 400),
+                        curve: Curves.fastEaseInToSlowEaseOut,
+                      );
+                    } else {
+                      NavigatorKey.pop();
+                    }
                   },
                 ),
               ),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ring_sizer/components/back_appbar.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
 import 'package:ring_sizer/controllers/settings_controller.dart';
+import 'package:ring_sizer/views/country_page.dart';
 import 'package:ring_sizer/views/premium_page.dart';
 import 'package:ring_sizer/views/save_size_page.dart';
 
@@ -28,7 +30,11 @@ class SettingsPage extends StatelessWidget {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    menuOption(controller.countryName, () {}),
+                    Obx(() {
+                      return menuOption(controller.countryName, () {
+                        NavigatorKey.push(const CountryPage());
+                      });
+                    }),
                     const Divider(height: 1, color: primaryColor),
                     menuOption('Save Size', () {
                       NavigatorKey.push(const SaveSizePage());

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:ring_sizer/components/ad_section.dart';
 import 'package:ring_sizer/config/constants.dart';
 import 'package:ring_sizer/config/navigation.dart';
+import 'package:ring_sizer/controllers/settings_controller.dart';
 import 'package:ring_sizer/utils/local_storage.dart';
 import 'package:ring_sizer/views/navbar_page.dart';
 
@@ -13,6 +15,10 @@ class PremiumPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final controller = SettingsController.instance;
+
+    StoreProduct weekly = controller.storeProduct
+        .firstWhere((element) => element.identifier == weeklyPlan);
 
     return Scaffold(
       body: SafeArea(
@@ -51,7 +57,7 @@ class PremiumPage extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: '₹299',
+                        text: '${weekly.priceString}/week',
                         style: GoogleFonts.raleway(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
@@ -61,24 +67,32 @@ class PremiumPage extends StatelessWidget {
                     ]),
                   ),
                   const SizedBox(height: 15),
-                  Container(
-                    width: size.width,
-                    height: 50,
-                    margin: const EdgeInsets.symmetric(horizontal: 25),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: elevated,
-                    ),
-                    child: ElevatedButton(
-                      child: Text(
-                        'Continue',
-                        style: GoogleFonts.lora(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: textColor,
-                        ),
+                  Obx(
+                    () => Container(
+                      width: size.width,
+                      height: 50,
+                      margin: const EdgeInsets.symmetric(horizontal: 25),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        gradient: elevated,
                       ),
-                      onPressed: () {},
+                      child: ElevatedButton(
+                        child: Text(
+                          controller.ifPremium ? 'Subscribed' : 'Continue ≻',
+                          style: GoogleFonts.lora(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: textColor,
+                          ),
+                        ),
+                        onPressed: () {
+                          if (controller.ifPremium) {
+                            null;
+                          } else {
+                            controller.purchaseProduct(weekly);
+                          }
+                        },
+                      ),
                     ),
                   ),
                   const SizedBox(height: 5),
