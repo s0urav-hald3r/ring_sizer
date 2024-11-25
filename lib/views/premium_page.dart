@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,103 +24,124 @@ class PremiumPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         top: false,
-        child: SizedBox(
-          width: size.width,
-          height: size.height,
-          child: Stack(children: [
-            Image.asset(premiumPage),
-            Positioned(
-              bottom: 0,
-              child: SizedBox(
-                width: size.width,
-                child: Column(children: [
-                  Text(
-                    'Start Free Trial to Proceed\nWith Measuring',
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.lora(
-                      fontSize: 26,
-                      fontWeight: FontWeight.w400,
-                      color: textColor,
-                      letterSpacing: -1,
+        bottom: false,
+        child: Obx(() {
+          return SizedBox(
+            width: size.width,
+            height: size.height,
+            child: Stack(children: [
+              Image.asset(premiumPage),
+              Positioned(
+                bottom: 0,
+                child: SizedBox(
+                  width: size.width,
+                  child: Column(children: [
+                    Text(
+                      'Start Free Trial to Proceed\nWith Measuring',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lora(
+                        fontSize: 26,
+                        fontWeight: FontWeight.w400,
+                        color: textColor,
+                        letterSpacing: -1,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  const AdSection(),
-                  const SizedBox(height: 30),
-                  RichText(
-                    text: TextSpan(children: [
-                      TextSpan(
-                        text: '3 Days Free, Then ',
-                        style: GoogleFonts.raleway(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: textColor,
-                        ),
-                      ),
-                      TextSpan(
-                        text: '${weekly.priceString}/week',
-                        style: GoogleFonts.raleway(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          color: textColor,
-                        ),
-                      )
-                    ]),
-                  ),
-                  const SizedBox(height: 15),
-                  Obx(
-                    () => Container(
-                      width: size.width,
-                      height: 50,
-                      margin: const EdgeInsets.symmetric(horizontal: 25),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        gradient: elevated,
-                      ),
-                      child: ElevatedButton(
-                        child: Text(
-                          controller.ifPremium ? 'Subscribed' : 'Continue ≻',
-                          style: GoogleFonts.lora(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
+                    const SizedBox(height: 20),
+                    const AdSection(),
+                    const SizedBox(height: 30),
+                    RichText(
+                      text: TextSpan(children: [
+                        TextSpan(
+                          text: '3 Days Free, Then ',
+                          style: GoogleFonts.raleway(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
                             color: textColor,
                           ),
                         ),
-                        onPressed: () {
-                          if (controller.ifPremium) {
-                            null;
-                          } else {
-                            controller.purchaseProduct(weekly);
-                          }
-                        },
-                      ),
+                        TextSpan(
+                          text: '${weekly.priceString}/week',
+                          style: GoogleFonts.raleway(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: textColor,
+                          ),
+                        )
+                      ]),
                     ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    'Cancel any time before the week',
-                    style: GoogleFonts.lora(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w500,
-                      color: textColor.withOpacity(.5),
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        InkWell(
-                          onTap: () async {
-                            if (Get.currentRoute == '/') {
-                              await LocalStorage.addData(
-                                  isOnboardingDone, true);
-                              NavigatorKey.pushReplacement(const NavBarPage());
+                    const SizedBox(height: 15),
+                    Obx(
+                      () => Container(
+                        width: size.width,
+                        height: 50,
+                        margin: const EdgeInsets.symmetric(horizontal: 25),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          gradient: elevated,
+                        ),
+                        child: ElevatedButton(
+                          child: Text(
+                            controller.ifPremium ? 'Subscribed' : 'Continue ≻',
+                            style: GoogleFonts.lora(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: textColor,
+                            ),
+                          ),
+                          onPressed: () {
+                            if (controller.ifPremium) {
+                              null;
                             } else {
-                              NavigatorKey.pop();
+                              controller.purchaseProduct(weekly);
                             }
                           },
-                          child: Container(
-                            margin: const EdgeInsets.only(left: 27.5),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      'Cancel any time before the week',
+                      style: GoogleFonts.lora(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w500,
+                        color: textColor.withOpacity(.5),
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                            onTap: () async {
+                              if (Get.currentRoute == '/') {
+                                await LocalStorage.addData(
+                                    isOnboardingDone, true);
+                                NavigatorKey.pushReplacement(
+                                    const NavBarPage());
+                              } else {
+                                NavigatorKey.pop();
+                              }
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(left: 27.5),
+                              padding: const EdgeInsets.only(bottom: 1),
+                              decoration: const BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(color: primaryColor),
+                                ),
+                              ),
+                              child: Text(
+                                'No payment Now',
+                                style: GoogleFonts.lora(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w500,
+                                  color: textColor.withOpacity(.5),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(right: 27.5),
                             padding: const EdgeInsets.only(bottom: 1),
                             decoration: const BoxDecoration(
                               border: Border(
@@ -127,7 +149,7 @@ class PremiumPage extends StatelessWidget {
                               ),
                             ),
                             child: Text(
-                              'No payment Now',
+                              'Restore Purchase',
                               style: GoogleFonts.lora(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w500,
@@ -135,31 +157,26 @@ class PremiumPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(right: 27.5),
-                          padding: const EdgeInsets.only(bottom: 1),
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(color: primaryColor),
-                            ),
-                          ),
-                          child: Text(
-                            'Restore Purchase',
-                            style: GoogleFonts.lora(
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                              color: textColor.withOpacity(.5),
-                            ),
-                          ),
-                        ),
-                      ]),
-                  const SizedBox(height: 20),
-                ]),
+                        ]),
+                    SizedBox(
+                        height: 20 + MediaQuery.of(context).padding.bottom),
+                  ]),
+                ),
               ),
-            )
-          ]),
-        ),
+              if (controller.isLoading)
+                Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: Colors.black38,
+                  child: const Center(
+                    child: CupertinoActivityIndicator(
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+            ]),
+          );
+        }),
       ),
     );
   }
