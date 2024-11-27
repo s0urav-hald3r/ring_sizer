@@ -10,7 +10,7 @@
     "_applicationInternalID" : "6738625721",
     "_developerTeamID" : "QMFJ48V58D",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 754205402.78794396,
+    "_lastSynchronizedDate" : 754316496.36865306,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
@@ -81,7 +81,7 @@
           "groupNumber" : 1,
           "internalID" : "6738636144",
           "introductoryOffer" : {
-            "internalID" : "408AD7A3",
+            "internalID" : "938251DB",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P3D"
@@ -89,7 +89,7 @@
           "localizations" : [
             {
               "description" : "get all premium features over the week",
-              "displayName" : "Weekly Plan, 3-days free",
+              "displayName" : "Weekly Plan",
               "locale" : "en_US"
             }
           ],
